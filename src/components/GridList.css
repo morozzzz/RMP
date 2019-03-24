@@ -1,0 +1,11 @@
+.grid-list {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-list-content {
+    max-width: 1080px;
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

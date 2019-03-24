@@ -1,0 +1,43 @@
+.poster-tile {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 1.5em;
+}
+
+.poster-image {
+    width: 100%;
+}
+
+.primary-data {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5em 0;
+}
+
+.poster-title {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.poster-year{
+    font-size: 0.6em;
+    border: 0.08em solid black;
+    border-radius: 15%;
+    padding: 0.2em 0.6em;
+    display: flex;
+}
+
+.secondary-data {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.poster-genre {
+    font-size: 0.9em;
+    color: rgb(90, 90, 90);
+}

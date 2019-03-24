@@ -1,0 +1,13 @@
+.status-bar {
+    background-color: rgb(238, 238, 238);
+    font-weight: bold;
+}
+
+.status-bar-content {
+    min-height: 2.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+}
