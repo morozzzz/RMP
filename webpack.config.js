@@ -1,28 +1,43 @@
 const path = require('path');
 
-module.exports = (env, argv) => {    
-    return {
-        context: path.join(__dirname, 'src'),
-        entry: './index.js',
-        output: {
-            filename: 'bundle.js',
-            path: path.join(__dirname, 'dist')
-        },
-        resolve: {
-            extensions: ['.js']
-        },
-        watch: true,
-        devtool: argv.mode === 'development' ? 'source-map' : 'none',
-        module: {
-            rules: [
-                {
-                    test: /\.js$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: 'babel-loader'
-                    }
-                }
-            ]
-        }
-    }
-}
+module.exports = (env, argv) => ({
+    context: path.join(__dirname, 'src'),
+    entry: './app.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.join(__dirname, 'dist'),
+    },
+    resolve: {
+        extensions: ['.js'],
+    },
+    watch: true,
+    devtool: argv.mode === 'development' ? 'source-map' : 'none',
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['@babel/react'],
+                    plugins: ['@babel/plugin-proposal-class-properties'],
+                },
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+});

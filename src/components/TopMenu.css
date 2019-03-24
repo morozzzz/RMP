@@ -1,0 +1,26 @@
+.top-menu {
+    background: url('../assets/background_main.jpg');
+    position: relative;
+}
+
+.top-menu-overlay {
+    background-color: rgba(0, 0, 0, 0.644);
+}
+
+.top-menu-content-container {
+    display: flex;
+    justify-content: center;
+} 
+
+.top-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 60%;
+    margin: 1em 0;
+}
+
+.top-menu-item {
+    margin-bottom: 1em;
+}
