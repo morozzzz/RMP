@@ -1,18 +1,18 @@
 .top-menu {
     background: url('../assets/background_main.jpg');
-    position: relative;
 }
 
 .top-menu-overlay {
     background-color: rgba(0, 0, 0, 0.644);
+    height: 100%;
 }
 
-.top-menu-content-container {
+.top-menu__content-container {
     display: flex;
     justify-content: center;
 } 
 
-.top-menu-content {
+.top-menu__content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -21,6 +21,6 @@
     margin: 1em 0;
 }
 
-.top-menu-item {
+.top-menu__item {
     margin-bottom: 1em;
 }

@@ -1,0 +1,44 @@
+.poster-tile {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 1.5em;
+    cursor: pointer;
+}
+
+.poster-tile__image {
+    width: 100%;
+}
+
+.poster-tile__primary-data {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5em 0;
+}
+
+.poster-tile__title {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.poster-tile__year{
+    font-size: 0.6em;
+    border: 0.08em solid black;
+    border-radius: 15%;
+    padding: 0.2em 0.6em;
+    display: flex;
+}
+
+.poster-tile__secondary-data {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.poster-tile__genre {
+    font-size: 0.9em;
+    color: rgb(90, 90, 90);
+}
