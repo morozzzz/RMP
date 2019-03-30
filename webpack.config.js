@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = (env, argv) => ({
     context: path.join(__dirname, 'src'),
-    entry: './index.js',
+    entry: './app.js',
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'dist'),
@@ -13,25 +13,30 @@ module.exports = (env, argv) => ({
     watch: true,
     devtool: argv.mode === 'development' ? 'source-map' : 'none',
     module: {
-        preLoaders: [
-            {
-                test: /\.jsx?$/,
-                loaders: ['eslint-loader'],
-                include: path.join(__dirname, 'src'),
-                exclude: path.join(__dirname, 'src/app/container'),
-            },
-        ],
-        eslint: {
-            configFile: './.eslintrc', // your .eslintrc file
-            emitWarning: true,
-        },
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
+                loader: 'babel-loader',
+                query: {
+                    presets: ['@babel/react', '@babel/env'],
+                    plugins: ['@babel/plugin-proposal-class-properties'],
                 },
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                        },
+                    },
+                ],
             },
         ],
     },

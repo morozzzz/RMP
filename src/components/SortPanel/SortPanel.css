@@ -1,0 +1,23 @@
+.sort-panel {
+    display: flex;
+    
+}
+
+.sort-panel * {
+    margin: 0 0.5em;
+}
+
+.sort-panel__button {
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+
+.sort-panel__button_selected {
+    color: rgb(248, 129, 129);
+}
+
+.pointer {
+    cursor: pointer;
+}

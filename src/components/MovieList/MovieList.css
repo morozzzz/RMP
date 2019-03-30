@@ -1,0 +1,13 @@
+.movie-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-list__message {
+    font-size: 3em;
+    font-weight: bold;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
