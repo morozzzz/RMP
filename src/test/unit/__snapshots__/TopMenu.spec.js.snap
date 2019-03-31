@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopMenu should be rendered correctly 1`] = `
+<div
+  className="top-menu"
+>
+  <div
+    className="top-menu-overlay"
+  >
+    <div
+      className="top-menu__content-container"
+    >
+      <div
+        className="top-menu__content"
+      >
+        <Component
+          className="top-menu__item"
+          name="netflixroulettee"
+          redirectUrl=""
+        />
+        <Component
+          className="top-menu__item"
+          onSearchClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

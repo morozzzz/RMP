@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridList should be rendered correctly 1`] = `
+<div
+  className="grid-list"
+>
+  <div
+    className="grid-list__content"
+  >
+    <Component
+      data={
+        Object {
+          "id": 333339,
+          "tagline": "A better reality awaits.",
+          "title": "Ready Player One",
+        }
+      }
+      key="333339"
+    />
+    <Component
+      data={
+        Object {
+          "id": 338970,
+          "tagline": "Her legend begins",
+          "title": "Tomb Raider",
+        }
+      }
+      key="338970"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should be rendered correctly 1`] = `
+<div
+  className="footer"
+>
+  <div
+    className="footer__content"
+  >
+    <Logo
+      name="netflixroulettee"
+      redirectUrl=""
+    />
+  </div>
+</div>
+`;

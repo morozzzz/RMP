@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPanel should be rendered correctly 1`] = `
+<div
+  className="search-panel"
+>
+  <h3
+    className="search-panel__header"
+  >
+    FIND YOUR MOVIE
+  </h3>
+  <input
+    className="search-panel__input"
+    onChange={[Function]}
+    onKeyUp={[Function]}
+    placeholder="Enter key words..."
+    type="text"
+  />
+  <div
+    className="search-panel__bottom-bar"
+  >
+    <div
+      className="search-panel__criterias"
+    >
+      <div>
+        SEARCH BY
+      </div>
+      <button
+        className="search-panel__criteria-button search-panel__criteria-button_selected"
+        id="title-button"
+        onClick={[Function]}
+        type="button"
+      >
+        TITLE
+      </button>
+      <button
+        className="search-panel__criteria-button false"
+        id="genre-button"
+        onClick={[Function]}
+        type="button"
+      >
+        GENRE
+      </button>
+    </div>
+    <button
+      className="search-panel__search-button"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      SEARCH
+    </button>
+  </div>
+</div>
+`;

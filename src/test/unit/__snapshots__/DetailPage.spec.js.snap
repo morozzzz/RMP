@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailPage component should be rendered correctly 1`] = `
+<ErrorBoundary>
+  <div
+    className="detail-page"
+  >
+    <Component
+      movieData={
+        Object {
+          "budget": 94000000,
+          "genres": Array [
+            "Action",
+            "Adventure",
+          ],
+          "id": 338970,
+          "overview": "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
+          "poster_path": "https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg",
+          "release_date": "2018-03-08",
+          "revenue": 126025000,
+          "runtime": 118,
+          "tagline": "Her legend begins",
+          "title": "Tomb Raider",
+          "vote_average": 6.2,
+          "vote_count": 817,
+        }
+      }
+    />
+    <Component
+      status="Films by Action genre"
+    />
+    <Component
+      movies={Array []}
+      onItemClick={[Function]}
+    />
+    <Component />
+  </div>
+</ErrorBoundary>
+`;

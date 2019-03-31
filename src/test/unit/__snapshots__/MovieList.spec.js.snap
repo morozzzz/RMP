@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList should be rendered correctly 1`] = `
+<div
+  className="movie-list"
+>
+  <Component
+    data={
+      Array [
+        Object {
+          "budget": 175000000,
+          "genres": Array [
+            "Adventure",
+            "Science Fiction",
+            "Action",
+          ],
+          "id": 333339,
+          "overview": "When the creator of a popular video game system dies, a virtual contest is created to compete for his fortune.",
+          "poster_path": "https://image.tmdb.org/t/p/w500/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg",
+          "release_date": "2018-03-28",
+          "revenue": 0,
+          "runtime": 140,
+          "tagline": "A better reality awaits.",
+          "title": "Ready Player One",
+          "vote_average": 8.1,
+          "vote_count": 617,
+        },
+        Object {
+          "budget": 94000000,
+          "genres": Array [
+            "Action",
+            "Adventure",
+          ],
+          "id": 338970,
+          "overview": "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
+          "poster_path": "https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg",
+          "release_date": "2018-03-08",
+          "revenue": 126025000,
+          "runtime": 118,
+          "tagline": "Her legend begins",
+          "title": "Tomb Raider",
+          "vote_average": 6.2,
+          "vote_count": 817,
+        },
+      ]
+    }
+  />
+</div>
+`;

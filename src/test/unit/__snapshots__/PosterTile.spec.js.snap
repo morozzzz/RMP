@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PosterTile should be rendered correctly 1`] = `
+<div
+  className="poster-tile"
+  onClick={[Function]}
+>
+  <img
+    alt="poster"
+    className="poster-tile__image"
+    src="http://some_url"
+  />
+  <div
+    className="poster-tile__primary-data"
+  >
+    <div
+      className="poster-tile__title"
+    >
+      SOME TITLE
+    </div>
+    <div
+      className="poster-tile__year"
+    >
+      2002
+    </div>
+  </div>
+  <div
+    className="poster-tile__secondary-data"
+  >
+    <div
+      className="poster-tile__genre"
+    >
+      Action Adventure
+    </div>
+  </div>
+</div>
+`;

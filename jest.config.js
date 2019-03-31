@@ -13,5 +13,4 @@ module.exports = {
         '\\.(css|less)$': 'identity-obj-proxy',
     },
     setupFilesAfterEnv: ['./src/test/unit/setup.js'],
-    collectCoverageFrom: ['./src/**/*.js'],
 };

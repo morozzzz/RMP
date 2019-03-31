@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPanel should be rendered correctly 1`] = `
+<div
+  className="sort-panel"
+>
+  <div>
+    Sort by
+  </div>
+  <button
+    className="sort-panel__button_selected sort-panel__button"
+    id="release-button"
+    onClick={[Function]}
+    type="button"
+  >
+    release date
+  </button>
+  <button
+    className="false sort-panel__button"
+    id="rating-button"
+    onClick={[Function]}
+    type="button"
+  >
+    rating
+  </button>
+</div>
+`;

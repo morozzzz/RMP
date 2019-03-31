@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusBar should be rendered correctly 1`] = `
+<div
+  className="status-bar"
+>
+  <div
+    className="status-bar__content"
+  >
+    <div
+      className="status-bar__list-status"
+    >
+      some status
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailMovieBlock should be rendered correctly 1`] = `
+<div
+  className="detail-block"
+>
+  <div
+    className="detail-block__overlay"
+  >
+    <div
+      className="detail-block__top-bar"
+    >
+      <Component
+        name="netflixroulettee"
+        redirectUrl=""
+      />
+      <button
+        className="detail-block__search-button"
+        type="button"
+      >
+        SEARCH
+      </button>
+    </div>
+    <div
+      className="detail-block__content"
+    >
+      <div
+        className="detail-block__image-container"
+      >
+        <img
+          alt="poster"
+          className="detail-block__image"
+          src="http://some_url"
+        />
+      </div>
+      <div
+        className="detail-block__info"
+      >
+        <div
+          className="detail-block__primary-data"
+        >
+          <div
+            className="detail-block__title"
+          >
+            Some title
+          </div>
+          <div
+            className="detail-block__rating"
+          >
+            10
+          </div>
+        </div>
+        <div
+          className="detail-block__additional"
+        >
+          Some tagline
+        </div>
+        <div
+          className="detail-block__secondary-data detail-block-secondary-data"
+        >
+          <div
+            className="detail-block-secondary-data__item"
+          >
+            2002
+          </div>
+          <div
+            className="detail-block-secondary-data__item"
+          >
+            156 min
+          </div>
+        </div>
+        <div
+          className="detail-block__description"
+        >
+          Some overview
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
