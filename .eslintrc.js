@@ -7,7 +7,8 @@ module.exports = {
     "extends": "airbnb",
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "cy": true
     },
     "parserOptions": {
         "ecmaFeatures": {
