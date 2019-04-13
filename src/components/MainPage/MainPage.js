@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import TopMenu from '../TopMenu/TopMenu';
 import MovieList from '../MovieList/MovieList';
 import StatusBar from '../StatusBar/StatusBar';
 import SortPanel from '../SortPanel/SortPanel';
 import Footer from '../Footer/Footer';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import MovieService from '../../services/MovieService';
+import { fetchMovies } from '../../actions/mainPage.actions';
 import './MainPage.css';
 
 class MainPage extends React.Component {
@@ -17,12 +18,9 @@ class MainPage extends React.Component {
     }
 
     componentDidMount = () => {
-        const defaultCriteria = {}; // todo
-
-        return MovieService.getMovies(defaultCriteria)
-            .then((movies) => {
-                this.setState({ movies });
-            });
+        console.log(3);
+        
+        fetchMovies();
     };
 
     onPosterClick = () => {
@@ -30,8 +28,7 @@ class MainPage extends React.Component {
     }
 
     updateMovies = async (criteria) => {
-        const movies = await MovieService.getMovies(criteria);
-        this.setState({ movies });
+        
     }
 
     render() {
@@ -53,4 +50,12 @@ class MainPage extends React.Component {
     }
 }
 
-export default MainPage;
+const mapStateToProps = state => (
+    {
+        movies: state.mainPage.movies,
+    }
+);
+
+const mapDi
+
+export default connect(mapStateToProps)(MainPage);

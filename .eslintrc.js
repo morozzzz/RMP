@@ -30,5 +30,6 @@ module.exports = {
         "jsx-a11y/click-events-have-key-events": "off",
         "import/no-extraneous-dependencies": "off",
         "camelcase": "off",
+        "import/prefer-default-export": "off",
     }
 };
