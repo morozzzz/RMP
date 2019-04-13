@@ -1,41 +1,39 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import TopMenu from '../TopMenu/TopMenu';
 import MovieList from '../MovieList/MovieList';
 import StatusBar from '../StatusBar/StatusBar';
 import SortPanel from '../SortPanel/SortPanel';
 import Footer from '../Footer/Footer';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import MovieService from '../../services/MovieService';
+import { fetchMovies } from '../../actions/movies.actions';
 import './MainPage.css';
 
 class MainPage extends React.Component {
-    constructor() {
+    constructor(props) {
         super();
-        this.state = {
-            movies: [],
-        };
+        this.getMovies = props.getMovies.bind(this);
     }
 
     componentDidMount = () => {
-        const defaultCriteria = {}; // todo
+        const { movies } = this.props;
 
-        return MovieService.getMovies(defaultCriteria)
-            .then((movies) => {
-                this.setState({ movies });
-            });
+        !movies.length && this.getMovies(this.searchParams);
     };
 
     onPosterClick = () => {
         // go to detail page
     }
 
-    updateMovies = async (criteria) => {
-        const movies = await MovieService.getMovies(criteria);
-        this.setState({ movies });
+    updateMovies = () => {
+        const { searchParams } = this.props;
+
+        this.getMovies(searchParams);
     }
 
     render() {
-        const { movies } = this.state;
+        const { movies } = this.props;
+
         return (
             <ErrorBoundary>
                 <div className="main-page">
@@ -53,4 +51,17 @@ class MainPage extends React.Component {
     }
 }
 
-export default MainPage;
+const mapStateToProps = state => (
+    {
+        movies: state.movies.general,
+        searchParams: state.searchParams,
+    }
+);
+
+const mapDispatchToProps = dispatch => (
+    {
+        getMovies: options => dispatch(fetchMovies(options)),
+    }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

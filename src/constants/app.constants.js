@@ -1,13 +1,24 @@
-export const CRITERIAS = {
+const CRITERIAS = {
     TITLE: 'title',
-    GENRE: 'genre',
+    GENRE: 'genres',
 };
 
-export const SORT_PARAMS = {
+const SORT_TYPES = {
     RELEASE_DATE: 'release_date',
-    RATING: 'rating',
+    RATING: 'vote_average',
 };
 
-export const KEY_CODES = {
+const KEY_CODES = {
     ENTER: 13,
+};
+
+const SERVER_URL = 'https://reactjs-cdp.herokuapp.com';
+
+const GET_MOVIES_URL = `${SERVER_URL}/movies`;
+
+export {
+    CRITERIAS,
+    SORT_TYPES,
+    KEY_CODES,
+    GET_MOVIES_URL,
 };

@@ -1,6 +1,21 @@
-const MovieService = {
-    getMovies: () => Promise.resolve([]), // todo
-    getMovieById: () => Promise.resolve({}), // todo
+import { GET_MOVIES_URL } from '../constants/app.constants';
+
+
+const getMovies = (options = {}) => {
+    const queryString = Object.keys(options)
+        .map(param => `${param}=${options[param]}&`)
+        .join('')
+        .slice(0, -1);
+
+    const targetUrl = `${GET_MOVIES_URL}?${queryString}`;
+    console.log(targetUrl);
+    
+    return fetch(targetUrl);
 };
 
-export default MovieService;
+const getMovieById = () => Promise.resolve({}); // todo
+
+export {
+    getMovies,
+    getMovieById,
+};
