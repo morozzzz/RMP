@@ -6,33 +6,41 @@ import StatusBar from '../StatusBar/StatusBar';
 import SortPanel from '../SortPanel/SortPanel';
 import Footer from '../Footer/Footer';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import { fetchMovies } from '../../actions/mainPage.actions';
+import {
+    fetchMoviesByCriteria,
+    setDetailedMovie,
+} from '../../actions/movies.actions';
 import './MainPage.css';
 
 class MainPage extends React.Component {
-    constructor() {
+    constructor(props) {
         super();
-        this.state = {
-            movies: [],
-        };
+        this.getMovies = props.getMovies.bind(this);
     }
 
     componentDidMount = () => {
-        console.log(3);
-        
-        fetchMovies();
+        const { movies } = this.props;
+
+        !movies.length && this.getMovies(this.searchParams);
     };
 
-    onPosterClick = () => {
-        // go to detail page
+    onPosterClick = (data) => {
+        const { storeDetailedMovie } = this.props;
+
+        storeDetailedMovie(data);
+
+        // go to DP
     }
 
-    updateMovies = async (criteria) => {
-        
+    updateMovies = () => {
+        const { searchParams } = this.props;
+
+        this.getMovies(searchParams);
     }
 
     render() {
-        const { movies } = this.state;
+        const { movies } = this.props;
+
         return (
             <ErrorBoundary>
                 <div className="main-page">
@@ -52,10 +60,16 @@ class MainPage extends React.Component {
 
 const mapStateToProps = state => (
     {
-        movies: state.mainPage.movies,
+        movies: state.movies.general,
+        searchParams: state.searchParams,
     }
 );
 
-const mapDi
+const mapDispatchToProps = dispatch => (
+    {
+        getMovies: options => dispatch(fetchMoviesByCriteria(options)),
+        storeDetailedMovie: data => dispatch(setDetailedMovie(data)),
+    }
+);
 
-export default connect(mapStateToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

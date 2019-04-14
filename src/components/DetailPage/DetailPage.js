@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import MovieList from '../MovieList/MovieList';
 import StatusBar from '../StatusBar/StatusBar';
 import DetailMovieBlock from '../DetailMovieBlock/DetailMovieBlock';
 import Footer from '../Footer/Footer';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import MovieService from '../../services/MovieService';
+import {
+    fetchRalatedMovies,
+    setDetailedMovie,
+} from '../../actions/movies.actions';
 import '@babel/polyfill';
 import './DetailPage.css';
 
@@ -17,44 +21,23 @@ const getStatus = (text) => {
 };
 
 class DetailPage extends React.Component {
-    constructor({ detailedMovie }) {
-        super();
-        this.state = {
-            detailedMovie: detailedMovie || {
-                id: '',
-                title: '',
-                tagline: '',
-                vote_average: '',
-                vote_count: '',
-                release_date: '',
-                poster_path: '',
-                overview: '',
-                budget: '',
-                revenue: '',
-                genres: [''],
-                runtime: '',
-            },
-            movies: [],
-        };
-    }
-
     onPosterClick = async (data) => {
-        const movies = await MovieService.getMovies(data.genres[0]);
-        this.setState({ movies, detailedMovie: data });
+        const { getRelatedMovies, storeDetailedMovie } = this.props;
+        const { genres } = data;
+
+        storeDetailedMovie(data);
+        getRelatedMovies({ genres });
     }
 
     componentDidMount = () => {
-        const { detailedMovie } = this.state;
-        const genre = detailedMovie && detailedMovie.genres[0];
+        const { getRelatedMovies, detailedMovie } = this.props;
+        const { genres } = detailedMovie.genres;
 
-        MovieService.getMovies({ genre })
-            .then((movies) => {
-                this.setState({ movies });
-            });
+        getRelatedMovies({ genres });
     }
 
     render() {
-        const { movies, detailedMovie } = this.state;
+        const { movies, detailedMovie } = this.props;
         const singleGenre = detailedMovie.genres[0];
 
         return (
@@ -70,4 +53,18 @@ class DetailPage extends React.Component {
     }
 }
 
-export default DetailPage;
+const mapStateToProps = state => (
+    {
+        detailedMovie: state.movies.detailed,
+        movies: state.movies.related,
+    }
+);
+
+const mapDispatchToProps = dispatch => (
+    {
+        getRelatedMovies: options => dispatch(fetchRalatedMovies(options)),
+        storeDetailedMovie: data => dispatch(setDetailedMovie(data)),
+    }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailPage);

@@ -74,12 +74,15 @@
     border-radius: 50%;
     color: rgb(185, 250, 132);
     margin-left: 1em;
+    min-width: 1.2em;
+    min-height: 1.2em;
+    text-align: center;
 }
 
 .detail-block__secondary-data {
     margin: 0.8em 0;
     display: flex;
-    width: 28%;
+    width: 100%;
     justify-content: space-between;
     font-weight: bold;   
 }

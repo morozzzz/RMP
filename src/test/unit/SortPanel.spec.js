@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import SortPanel from '../../components/SortPanel/SortPanel';
-import { SORT_PARAMS } from '../../constants/app.constants';
+import { SORT_TYPES } from '../../constants/app.constants';
 
 describe('SearchPanel', () => {
     it('should be rendered correctly', () => {
@@ -23,21 +23,21 @@ describe('SearchPanel', () => {
         expect(onSortUpdateMock).toHaveBeenCalledWith(state);
     });
 
-    it('click on RATING button should set state.sortBy with SORT_PARAMS.RATING', () => {
+    it('click on RATING button should set state.sortBy with SORT_TYPES.RATING', () => {
         const wrapper = shallow(<SortPanel onSortUpdate={() => {}} />);
         const ratingButton = wrapper.find('#rating-button');
 
         ratingButton.simulate('click');
 
-        expect(wrapper.state().sortBy).toEqual(SORT_PARAMS.RATING);
+        expect(wrapper.state().sortBy).toEqual(SORT_TYPES.RATING);
     });
 
-    it('click on RELEASE DATE button should set state.sortBy with SORT_PARAMS.RELEASE_DATE', () => {
+    it('click on RELEASE DATE button should set state.sortBy with SORT_TYPES.RELEASE_DATE', () => {
         const wrapper = shallow(<SortPanel onSortUpdate={() => {}} />);
         const releaseButton = wrapper.find('#release-button');
 
         releaseButton.simulate('click');
 
-        expect(wrapper.state().sortBy).toEqual(SORT_PARAMS.RELEASE_DATE);
+        expect(wrapper.state().sortBy).toEqual(SORT_TYPES.RELEASE_DATE);
     });
 });

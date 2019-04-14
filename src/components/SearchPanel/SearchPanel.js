@@ -4,7 +4,7 @@ import { CRITERIAS, KEY_CODES } from '../../constants/app.constants';
 import {
     setActiveCrtiteria,
     updateSearchText,
-} from '../../actions/SearchPannel.Actions';
+} from '../../actions/search.actions';
 
 import './SearchPanel.css';
 
@@ -16,9 +16,9 @@ class SearchPannel extends React.Component {
     };
 
     handleKey = (event) => {
-        const { onSearchClick, searchValue } = this.props;
+        const { onSearchClick, search } = this.props;
 
-        if (event.keyCode === KEY_CODES.ENTER && searchValue) {
+        if (event.keyCode === KEY_CODES.ENTER && search.trim()) {
             onSearchClick();
         }
     }
@@ -26,7 +26,7 @@ class SearchPannel extends React.Component {
     render() {
         const {
             onCriteriaClick,
-            searchValue,
+            search,
             searchBy,
             onInputChange,
         } = this.props;
@@ -41,7 +41,7 @@ class SearchPannel extends React.Component {
                         <button id="title-button" value={CRITERIAS.TITLE} onClick={onCriteriaClick} type="button" className={`search-panel__criteria-button ${searchBy === CRITERIAS.TITLE && 'search-panel__criteria-button_selected'}`}>TITLE</button>
                         <button id="genre-button" value={CRITERIAS.GENRE} onClick={onCriteriaClick} type="button" className={`search-panel__criteria-button ${searchBy === CRITERIAS.GENRE && 'search-panel__criteria-button_selected'}`}>GENRE</button>
                     </div>
-                    <button onClick={this.handleSearchClick} disabled={!searchValue} type="button" className="search-panel__search-button">SEARCH</button>
+                    <button onClick={this.handleSearchClick} disabled={!search.trim()} type="button" className="search-panel__search-button">SEARCH</button>
                 </div>
             </div>
         );
@@ -50,7 +50,7 @@ class SearchPannel extends React.Component {
 
 const mapStateToProps = state => (
     {
-        searchValue: state.searchParams.searchValue,
+        search: state.searchParams.search,
         searchBy: state.searchParams.searchBy,
     }
 );

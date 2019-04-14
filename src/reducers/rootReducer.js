@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import searchParams from './searchPannel.reducer';
-import mainPage from './mainPage.reducer';
+import searchParams from './search.reducer';
+import movies from './movies.reducer';
 
 export default combineReducers({
     searchParams,
-    mainPage,
+    movies,
 });

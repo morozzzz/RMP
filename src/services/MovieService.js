@@ -12,7 +12,11 @@ const getMovies = (options = {}) => {
     return fetch(targetUrl);
 };
 
-const getMovieById = () => Promise.resolve({}); // todo
+const getMovieById = (id) => {
+    const targetUrl = `${GET_MOVIES_URL}/${id}`;
+
+    return fetch(targetUrl);
+};
 
 export {
     getMovies,

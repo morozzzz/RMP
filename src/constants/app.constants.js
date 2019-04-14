@@ -1,11 +1,11 @@
 const CRITERIAS = {
     TITLE: 'title',
-    GENRE: 'genre',
+    GENRE: 'genres',
 };
 
-const SORT_PARAMS = {
+const SORT_TYPES = {
     RELEASE_DATE: 'release_date',
-    RATING: 'rating',
+    RATING: 'vote_average',
 };
 
 const KEY_CODES = {
@@ -18,7 +18,7 @@ const GET_MOVIES_URL = `${SERVER_URL}/movies`;
 
 export {
     CRITERIAS,
-    SORT_PARAMS,
+    SORT_TYPES,
     KEY_CODES,
     GET_MOVIES_URL,
 };
