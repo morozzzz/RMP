@@ -1,5 +1,4 @@
-import { GET_MOVIES_URL } from '../constants/app.constants';
-
+import { GET_MOVIES_URL } from '../constants/app.constants';   
 
 const getMovies = (options = {}) => {
     const queryString = Object.keys(options)
@@ -9,7 +8,14 @@ const getMovies = (options = {}) => {
 
     const targetUrl = `${GET_MOVIES_URL}?${queryString}`;
 
-    return fetch(targetUrl);
+    return fetch(targetUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+
+            return response.json();
+        });
 };
 
 const getMovieById = (id) => {

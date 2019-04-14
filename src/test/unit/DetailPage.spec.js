@@ -66,7 +66,7 @@ jest.mock('../../components/StatusBar/StatusBar', () => () => <div id="StatusBar
 jest.mock('../../components/DetailMovieBlock/DetailMovieBlock', () => () => <div id="DetailMovieBlock" />);
 jest.mock('../../components/Footer/Footer', () => () => <div id="Footer" />);
 
-describe('DetailPage', () => {
+describe.skip('DetailPage', () => {
     beforeEach(() => {
         MovieService.getMovies.mockImplementation(() => Promise.resolve(moviesMock));
     });

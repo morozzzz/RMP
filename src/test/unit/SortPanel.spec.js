@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import SortPanel from '../../components/SortPanel/SortPanel';
 import { SORT_TYPES } from '../../constants/app.constants';
 
-describe('SearchPanel', () => {
+describe.skip('SearchPanel', () => {
     it('should be rendered correctly', () => {
         const wrapper = shallow(<SortPanel />);
 

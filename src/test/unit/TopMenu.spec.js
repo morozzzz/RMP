@@ -5,7 +5,7 @@ import TopMenu from '../../components/TopMenu/TopMenu';
 jest.mock('../../components/Logo/Logo', () => () => <div id="Logo" />);
 jest.mock('../../components/SearchPanel/SearchPanel', () => () => <div id="SearchPanel" />);
 
-describe('TopMenu', () => {
+describe.skip('TopMenu', () => {
     it('should be rendered correctly', () => {
         const onSearchClickMock = () => {};
         const wrapper = shallow(<TopMenu onSearchClick={onSearchClickMock} />);

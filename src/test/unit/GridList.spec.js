@@ -18,7 +18,7 @@ const moviesMock = [
 ];
 
 
-describe('GridList', () => {
+describe.skip('GridList', () => {
     it('should be rendered correctly', () => {
         const component = shallow(<GridList data={moviesMock} />);
 

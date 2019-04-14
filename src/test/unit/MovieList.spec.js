@@ -42,7 +42,7 @@ const moviesMock = [
 
 jest.mock('../../components/GridList/GridList', () => () => <div id="GridList" />);
 
-describe('MovieList', () => {
+describe.skip('MovieList', () => {
     it('should be rendered correctly', () => {
         const wrapper = shallow(<MovieList movies={moviesMock} />);
 

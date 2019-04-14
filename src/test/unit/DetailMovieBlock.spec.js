@@ -14,7 +14,7 @@ const data = {
     overview: 'Some overview',
 };
 
-describe('DetailMovieBlock', () => {
+describe.skip('DetailMovieBlock', () => {
     it('should be rendered correctly', () => {
         const component = shallow(<DetailMovieBlock movieData={data} />);
         expect(component).toMatchSnapshot();

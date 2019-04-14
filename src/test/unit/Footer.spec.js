@@ -4,7 +4,7 @@ import Footer from '../../components/Footer/Footer';
 
 jest.mock('../../components/PosterTile/PosterTile', () => () => <div id="PosterTile" />);
 
-describe('Footer', () => {
+describe.skip('Footer', () => {
     it('should be rendered correctly', () => {
         const component = shallow(<Footer />);
 

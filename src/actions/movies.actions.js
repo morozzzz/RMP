@@ -12,25 +12,15 @@ const ralatedMoviesFetchSuccess = createAction(RELATED_MOVIES_FETCH_SUCCESS);
 
 const setDetailedMovie = createAction(SET_DETAILED_MOVIE);
 
-const fetchMovies = options => getMovies(options)
-    .then((response) => {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-
-        return response.json();
-    });
-
-const fetchMoviesByCriteria = options => dispatch => fetchMovies(options)
+const fetchMoviesByCriteria = options => dispatch => getMovies(options)
     .then((formattedResp) => {
         dispatch(moviesFetchSuccess(formattedResp.data));
     });
 
-const fetchRalatedMovies = options => dispatch => fetchMovies(options)
+const fetchRalatedMovies = options => dispatch => getMovies(options)
     .then((formattedResp) => {
         dispatch(ralatedMoviesFetchSuccess(formattedResp.data));
     });
-
 
 export {
     fetchMoviesByCriteria,
