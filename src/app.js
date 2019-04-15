@@ -9,8 +9,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers/rootReducer';
 import { CRITERIAS, SORT_TYPES } from './constants/app.constants';
-import MainPage from './components/MainPage/MainPage';
-import DetailPage from './components/DetailPage/DetailPage';
+import MainPage from './containers/MainPage/MainPage';
+import DetailPage from './containers/DetailPage/DetailPage';
 
 const persistConfig = {
     key: 'root',
@@ -37,7 +37,7 @@ const store = createStore(persistedReducer, initialState, applyMiddleware(thunk,
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistStore(store)}>
-            <DetailPage />
+            <MainPage />
         </PersistGate>
     </Provider>,
     document.getElementById('root'),

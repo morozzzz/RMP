@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MovieList from '../MovieList/MovieList';
-import StatusBar from '../StatusBar/StatusBar';
-import DetailMovieBlock from '../DetailMovieBlock/DetailMovieBlock';
-import Footer from '../Footer/Footer';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import MovieList from '../../components/MovieList/MovieList';
+import StatusBar from '../../components/StatusBar/StatusBar';
+import DetailMovieBlock from '../../components/DetailMovieBlock/DetailMovieBlock';
+import Footer from '../../components/Footer/Footer';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 import {
     fetchRalatedMovies,
     setDetailedMovie,

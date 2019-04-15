@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchPanel from '../SearchPanel/SearchPanel';
+import SearchPanel from '../../containers/SearchPanel/SearchPanel';
 import Logo from '../Logo/Logo';
 import './TopMenu.css';
 

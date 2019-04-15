@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TopMenu from '../TopMenu/TopMenu';
-import MovieList from '../MovieList/MovieList';
-import StatusBar from '../StatusBar/StatusBar';
+import TopMenu from '../../components/TopMenu/TopMenu';
+import MovieList from '../../components/MovieList/MovieList';
+import StatusBar from '../../components/StatusBar/StatusBar';
 import SortPanel from '../SortPanel/SortPanel';
-import Footer from '../Footer/Footer';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import Footer from '../../components/Footer/Footer';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 import {
     fetchMoviesByCriteria,
     setDetailedMovie,
