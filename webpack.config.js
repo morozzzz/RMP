@@ -12,6 +12,11 @@ module.exports = (env, argv) => ({
     },
     watch: true,
     devtool: argv.mode === 'development' ? 'source-map' : 'none',
+    devServer: {
+        historyApiFallback: {
+            index: 'build/index.html',
+        },
+    },
     module: {
         rules: [
             {
@@ -31,9 +36,9 @@ module.exports = (env, argv) => ({
                 test: /\.(png|jpg|gif)$/i,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: 'file-loader',
                         options: {
-                            limit: 8192,
+                            publicPath: 'dist',
                         },
                     },
                 ],

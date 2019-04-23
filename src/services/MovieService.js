@@ -1,11 +1,6 @@
-import { GET_MOVIES_URL } from '../constants/app.constants';   
+import { GET_MOVIES_URL } from '../constants/app.constants';
 
-const getMovies = (options = {}) => {
-    const queryString = Object.keys(options)
-        .map(param => `${param}=${options[param]}&`)
-        .join('')
-        .slice(0, -1);
-
+const getMovies = (queryString) => {
     const targetUrl = `${GET_MOVIES_URL}?${queryString}`;
 
     return fetch(targetUrl)
@@ -21,7 +16,14 @@ const getMovies = (options = {}) => {
 const getMovieById = (id) => {
     const targetUrl = `${GET_MOVIES_URL}/${id}`;
 
-    return fetch(targetUrl);
+    return fetch(targetUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+
+            return response.json();
+        });
 };
 
 export {

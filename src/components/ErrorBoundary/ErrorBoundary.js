@@ -1,8 +1,8 @@
 import React from 'react';
 
 class ErrorBoundary extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             hasError: false,
             error: null,
@@ -24,11 +24,11 @@ class ErrorBoundary extends React.Component {
 
         if (hasError) {
             return (
-                <>
+                <div>
                     <h1>Something went wrong.</h1>
                     <div>{error}</div>
                     <div>{info}</div>
-                </>
+                </div>
             );
         }
 

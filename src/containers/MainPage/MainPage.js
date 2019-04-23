@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
 import TopMenu from '../../components/TopMenu/TopMenu';
 import MovieList from '../../components/MovieList/MovieList';
 import StatusBar from '../../components/StatusBar/StatusBar';
@@ -8,7 +9,6 @@ import Footer from '../../components/Footer/Footer';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 import {
     fetchMoviesByCriteria,
-    setDetailedMovie,
 } from '../../actions/movies.actions';
 import './MainPage.css';
 
@@ -19,38 +19,58 @@ class MainPage extends React.Component {
     }
 
     componentDidMount = () => {
-        const { movies } = this.props;
+        const { location } = this.props;
+        const { search } = location;
 
-        !movies.length && this.getMovies(this.searchParams);
-    };
+        if (!search) return;
 
-    onPosterClick = (data) => {
-        const { storeDetailedMovie } = this.props;
-
-        storeDetailedMovie(data);
-
-        // go to DP
-    }
-
-    updateMovies = () => {
-        const { searchParams } = this.props;
+        const searchParams = queryString.parse(search);
 
         this.getMovies(searchParams);
     }
 
+    onPosterClick = (data) => {
+        const { history } = this.props;
+
+        history.push(`/film/${data.id}`);
+    }
+
+    updateMovies = () => {
+        const { searchParams, history } = this.props;
+
+        const query = queryString.stringify(searchParams);
+
+        console.log(query);
+
+
+        const query2 = Object.keys(searchParams)
+            .map(param => `${param}=${searchParams[param]}&`)
+            .join('')
+            .slice(0, -1);
+
+        console.log(query2);
+
+
+        history.push(`/search/?${query}`);
+
+        this.getMovies(query2);
+    }
+
     render() {
-        const { movies } = this.props;
+        const { movies, isMoviesFound } = this.props;
 
         return (
             <ErrorBoundary>
                 <div className="main-page">
                     <TopMenu onSearchClick={this.updateMovies} />
-                    <StatusBar status={movies.length ? `${movies.length} movies found` : ''}>
+                    <StatusBar status={isMoviesFound ? `${movies.length} movies found` : ''}>
                         {
-                            movies.length ? <SortPanel onSortUpdate={this.updateMovies} /> : null
+                            isMoviesFound ? <SortPanel onSortUpdate={this.updateMovies} /> : null
                         }
                     </StatusBar>
-                    <MovieList movies={movies} onItemClick={this.onPosterClick} />
+                    {
+                        typeof isMoviesFound === 'boolean' ? <MovieList movies={movies} onItemClick={this.onPosterClick} /> : <div />
+                    }
                     <Footer />
                 </div>
             </ErrorBoundary>
@@ -62,13 +82,13 @@ const mapStateToProps = state => (
     {
         movies: state.movies.general,
         searchParams: state.searchParams,
+        isMoviesFound: state.movies.isMoviesFound,
     }
 );
 
 const mapDispatchToProps = dispatch => (
     {
         getMovies: options => dispatch(fetchMoviesByCriteria(options)),
-        storeDetailedMovie: data => dispatch(setDetailedMovie(data)),
     }
 );
 
