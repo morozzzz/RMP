@@ -14,12 +14,11 @@ const data = {
     overview: 'Some overview',
 };
 
-describe.skip('DetailMovieBlock', () => {
+describe('DetailMovieBlock', () => {
     it('should be rendered correctly', () => {
         const component = shallow(<DetailMovieBlock movieData={data} />);
         expect(component).toMatchSnapshot();
     });
-
 
     it('click on SEARCH button should call props.onSearchClick', () => {
         const onSearchClickMock = jest.fn();

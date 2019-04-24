@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { applyMiddleware, createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
@@ -11,6 +12,7 @@ import reducer from './reducers/rootReducer';
 import { CRITERIAS, SORT_TYPES } from './constants/app.constants';
 import MainPage from './containers/MainPage/MainPage';
 import DetailPage from './containers/DetailPage/DetailPage';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 const persistConfig = {
     key: 'root',
@@ -37,7 +39,14 @@ const store = createStore(persistedReducer, initialState, applyMiddleware(thunk,
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistStore(store)}>
-            <MainPage />
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/film/:id" component={DetailPage} />
+                    <Route path="/search" component={MainPage} />
+                    <Route exact path="/" component={MainPage} />
+                    <Route path="" component={NotFoundPage} />
+                </Switch>
+            </BrowserRouter>
         </PersistGate>
     </Provider>,
     document.getElementById('root'),

@@ -20,7 +20,7 @@ global.getSelection = () => ({
     type: selectionType,
 });
 
-describe.skip('PosterTile', () => {
+describe('PosterTile', () => {
     beforeEach(() => {
         onTileClickMock.mockClear();
     });

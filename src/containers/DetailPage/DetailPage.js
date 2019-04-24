@@ -5,10 +5,7 @@ import StatusBar from '../../components/StatusBar/StatusBar';
 import DetailMovieBlock from '../../components/DetailMovieBlock/DetailMovieBlock';
 import Footer from '../../components/Footer/Footer';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
-import {
-    fetchRalatedMovies,
-    setDetailedMovie,
-} from '../../actions/movies.actions';
+import { fetchDetailedMovie } from '../../actions/movies.actions';
 import '@babel/polyfill';
 import './DetailPage.css';
 
@@ -21,31 +18,44 @@ const getStatus = (text) => {
 };
 
 class DetailPage extends React.Component {
-    onPosterClick = async (data) => {
-        const { getRelatedMovies, storeDetailedMovie } = this.props;
-        const { genres } = data;
+    componentDidMount = () => {
+        const { getDetailedMovie, match } = this.props;
+        const { params } = match;
+        const movieId = params.id;
 
-        storeDetailedMovie(data);
-        getRelatedMovies({ genres });
+        getDetailedMovie(movieId);
     }
 
-    componentDidMount = () => {
-        const { getRelatedMovies, detailedMovie } = this.props;
-        const { genres } = detailedMovie.genres;
+    onPosterClick = async (data) => {
+        const { getDetailedMovie, history } = this.props;
 
-        getRelatedMovies({ genres });
+        history.push(`/film/${data.id}`);
+
+        getDetailedMovie(data.id);
+
+        window.scrollTo(0, 0);
+    }
+
+    goToSearch = () => {
+        const { history } = this.props;
+
+        history.push('/');
     }
 
     render() {
         const { movies, detailedMovie } = this.props;
-        const singleGenre = detailedMovie.genres[0];
+        const singleGenre = detailedMovie && detailedMovie.genres && detailedMovie.genres[0];
 
         return (
             <ErrorBoundary>
                 <div className="detail-page">
-                    <DetailMovieBlock movieData={detailedMovie} />
+                    <DetailMovieBlock movieData={detailedMovie} onSearchClick={this.goToSearch} />
                     <StatusBar status={getStatus(singleGenre)} />
-                    <MovieList movies={movies} onItemClick={this.onPosterClick} />
+                    {
+                        detailedMovie
+                            ? <MovieList movies={movies} onItemClick={this.onPosterClick} />
+                            : <div />
+                    }
                     <Footer />
                 </div>
             </ErrorBoundary>
@@ -62,8 +72,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
     {
-        getRelatedMovies: options => dispatch(fetchRalatedMovies(options)),
-        storeDetailedMovie: data => dispatch(setDetailedMovie(data)),
+        getDetailedMovie: id => dispatch(fetchDetailedMovie(id)),
     }
 );
 

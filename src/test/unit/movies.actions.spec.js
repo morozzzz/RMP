@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import * as actions from '../../actions/movies.actions';
 import {
     MOVIES_FETCH_SUCCESS,
-    SET_DETAILED_MOVIE,
     RELATED_MOVIES_FETCH_SUCCESS,
+    MOVIES_FOUND,
 } from '../../constants/actionTypes.constants';
 import { getMovies } from '../../services/MovieService';
 
@@ -43,6 +43,9 @@ describe('movies.actions', () => {
             const store = mockStore();
             const expectedActions = [
                 {
+                    type: MOVIES_FOUND,
+                },
+                {
                     type: MOVIES_FETCH_SUCCESS,
                     payload: [movieMock],
                 },
@@ -51,29 +54,6 @@ describe('movies.actions', () => {
             return store.dispatch(actions.fetchMoviesByCriteria(criteriaStub)).then(() => {
                 expect(store.getActions()).toEqual(expectedActions);
             });
-        });
-
-        it('should create RELATED_MOVIES_FETCH_SUCCESS action when fetching of related movies is successfully done', () => {
-            const store = mockStore();
-            const expectedActions = [
-                {
-                    type: RELATED_MOVIES_FETCH_SUCCESS,
-                    payload: [movieMock],
-                },
-            ];
-
-            return store.dispatch(actions.fetchRalatedMovies(criteriaStub)).then(() => {
-                expect(store.getActions()).toEqual(expectedActions);
-            });
-        });
-
-        it('should create SET_DETAILED_MOVIE action', () => {
-            const expectedAction = {
-                type: SET_DETAILED_MOVIE,
-                payload: movieMock,
-            };
-
-            expect(actions.setDetailedMovie(movieMock)).toEqual(expectedAction);
         });
     });
 });

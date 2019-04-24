@@ -1,21 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainPage should be rendered correctly 1`] = `
-<Component>
-  <div
-    className="main-page"
-  >
-    <Component
-      onSearchClick={[Function]}
-    />
-    <Component
-      status=""
-    />
-    <Component
-      movies={Array []}
-      onItemClick={[Function]}
-    />
-    <Component />
-  </div>
-</Component>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;
