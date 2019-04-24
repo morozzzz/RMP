@@ -13,9 +13,9 @@ module.exports = (env, argv) => ({
     watch: true,
     devtool: argv.mode === 'development' ? 'source-map' : 'none',
     devServer: {
-        historyApiFallback: {
-            index: 'build/index.html',
-        },
+        historyApiFallback: true,
+        contentBase: './',
+        hot: true,
     },
     module: {
         rules: [

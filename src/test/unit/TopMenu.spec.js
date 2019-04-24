@@ -3,9 +3,9 @@ import { shallow } from 'enzyme';
 import TopMenu from '../../components/TopMenu/TopMenu';
 
 jest.mock('../../components/Logo/Logo', () => () => <div id="Logo" />);
-jest.mock('../../components/SearchPanel/SearchPanel', () => () => <div id="SearchPanel" />);
+jest.mock('../../containers/SearchPanel/SearchPanel', () => () => <div id="SearchPanel" />);
 
-describe.skip('TopMenu', () => {
+describe('TopMenu', () => {
     it('should be rendered correctly', () => {
         const onSearchClickMock = () => {};
         const wrapper = shallow(<TopMenu onSearchClick={onSearchClickMock} />);

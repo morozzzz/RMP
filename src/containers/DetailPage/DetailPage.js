@@ -18,20 +18,28 @@ const getStatus = (text) => {
 };
 
 class DetailPage extends React.Component {
-    onPosterClick = async (data) => {
-        const { getDetailedMovie, history } = this.props;
-
-        history.push(`/film/${data.id}`);
-
-        getDetailedMovie(data.id);
-    }
-
     componentDidMount = () => {
         const { getDetailedMovie, match } = this.props;
         const { params } = match;
         const movieId = params.id;
 
         getDetailedMovie(movieId);
+    }
+
+    onPosterClick = async (data) => {
+        const { getDetailedMovie, history } = this.props;
+
+        history.push(`/film/${data.id}`);
+
+        getDetailedMovie(data.id);
+
+        window.scrollTo(0, 0);
+    }
+
+    goToSearch = () => {
+        const { history } = this.props;
+
+        history.push('/');
     }
 
     render() {
@@ -41,7 +49,7 @@ class DetailPage extends React.Component {
         return (
             <ErrorBoundary>
                 <div className="detail-page">
-                    <DetailMovieBlock movieData={detailedMovie} />
+                    <DetailMovieBlock movieData={detailedMovie} onSearchClick={this.goToSearch} />
                     <StatusBar status={getStatus(singleGenre)} />
                     {
                         detailedMovie

@@ -1,7 +1,6 @@
 import reducer from '../../reducers/movies.reducer';
 import {
     MOVIES_FETCH_SUCCESS,
-    SET_DETAILED_MOVIE,
     RELATED_MOVIES_FETCH_SUCCESS,
 } from '../../constants/actionTypes.constants';
 
@@ -18,21 +17,6 @@ describe('search reducer', () => {
         const action = {
             type: MOVIES_FETCH_SUCCESS,
             payload: movies,
-        };
-
-        expect(reducer(initialState, action)).toEqual(expectedState);
-    });
-
-    it('should handle SET_DETAILED_MOVIE action', () => {
-        const movie = 'movie';
-
-        const expectedState = {
-            detailed: movie,
-        };
-
-        const action = {
-            type: SET_DETAILED_MOVIE,
-            payload: movie,
         };
 
         expect(reducer(initialState, action)).toEqual(expectedState);

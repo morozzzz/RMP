@@ -24,9 +24,7 @@ class MainPage extends React.Component {
 
         if (!search) return;
 
-        const searchParams = queryString.parse(search);
-
-        this.getMovies(searchParams);
+        this.getMovies(search);
     }
 
     onPosterClick = (data) => {
@@ -40,20 +38,9 @@ class MainPage extends React.Component {
 
         const query = queryString.stringify(searchParams);
 
-        console.log(query);
-
-
-        const query2 = Object.keys(searchParams)
-            .map(param => `${param}=${searchParams[param]}&`)
-            .join('')
-            .slice(0, -1);
-
-        console.log(query2);
-
-
         history.push(`/search/?${query}`);
 
-        this.getMovies(query2);
+        this.getMovies(query);
     }
 
     render() {
