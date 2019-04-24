@@ -38,7 +38,7 @@ const store = createStore(persistedReducer, initialState, applyMiddleware(thunk,
 
 ReactDOM.render(
     <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
+        <PersistGate loading={null} persistor={persistStore(store)}>
             <BrowserRouter>
                 <Switch>
                     <Route path="/film/:id" component={DetailPage} />
@@ -47,7 +47,7 @@ ReactDOM.render(
                     <Route path="" component={NotFoundPage} />
                 </Switch>
             </BrowserRouter>
-        {/* </PersistGate> */}
+        </PersistGate>
     </Provider>,
     document.getElementById('root'),
 );
