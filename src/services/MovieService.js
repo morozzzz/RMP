@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 import { GET_MOVIES_URL } from '../constants/app.constants';
 
 const getMovies = (queryString) => {
