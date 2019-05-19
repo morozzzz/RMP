@@ -1,8 +1,15 @@
+// @flow
+
 import React from 'react';
 import PosterTile from '../PosterTile/PosterTile';
 import './GridList.css';
 
-const GridList = ({ data = [], onItemClick }) => (
+type gridListPropType = {
+    data: Array<Object>,
+    onItemClick: Function
+};
+
+const GridList = ({ data = [], onItemClick }: gridListPropType) => (
     <div className="grid-list">
         <div className="grid-list__content">
             {

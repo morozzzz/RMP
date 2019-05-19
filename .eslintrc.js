@@ -20,6 +20,13 @@ module.exports = {
     "plugins": [
         "react"
     ],
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "webpack.config.js"
+            }
+        }
+    },
     "parser": "babel-eslint",
     "rules": {
         "indent": ["error", 4],

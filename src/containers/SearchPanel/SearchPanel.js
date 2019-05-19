@@ -1,4 +1,5 @@
 import React from 'react';
+import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { CRITERIAS, KEY_CODES } from '../../constants/app.constants';
 import {
@@ -8,6 +9,13 @@ import {
 
 import './SearchPanel.css';
 
+const getInputFieldText = state => state.searchParams.search;
+
+const getSearchButtonState = createSelector(
+    getInputFieldText,
+    inputFieldValue => !!inputFieldValue.trim(),
+);
+
 class SearchPannel extends React.Component {
     handleSearchClick = () => {
         const { onSearchClick } = this.props;
@@ -16,9 +24,9 @@ class SearchPannel extends React.Component {
     };
 
     handleKey = (event) => {
-        const { onSearchClick, search } = this.props;
+        const { onSearchClick, isValifInputData } = this.props;
 
-        if (event.keyCode === KEY_CODES.ENTER && search.trim()) {
+        if (event.keyCode === KEY_CODES.ENTER && isValifInputData) {
             onSearchClick();
         }
     }
@@ -26,7 +34,7 @@ class SearchPannel extends React.Component {
     render() {
         const {
             onCriteriaClick,
-            search,
+            isValifInputData,
             searchBy,
             onInputChange,
         } = this.props;
@@ -41,7 +49,7 @@ class SearchPannel extends React.Component {
                         <button id="title-button" value={CRITERIAS.TITLE} onClick={onCriteriaClick} type="button" className={`search-panel__criteria-button ${searchBy === CRITERIAS.TITLE && 'search-panel__criteria-button_selected'}`}>TITLE</button>
                         <button id="genre-button" value={CRITERIAS.GENRE} onClick={onCriteriaClick} type="button" className={`search-panel__criteria-button ${searchBy === CRITERIAS.GENRE && 'search-panel__criteria-button_selected'}`}>GENRE</button>
                     </div>
-                    <button onClick={this.handleSearchClick} disabled={!search.trim()} type="button" className="search-panel__search-button">SEARCH</button>
+                    <button onClick={this.handleSearchClick} disabled={!isValifInputData} type="button" className="search-panel__search-button">SEARCH</button>
                 </div>
             </div>
         );
@@ -50,8 +58,8 @@ class SearchPannel extends React.Component {
 
 const mapStateToProps = state => (
     {
-        search: state.searchParams.search,
         searchBy: state.searchParams.searchBy,
+        isValifInputData: getSearchButtonState(state),
     }
 );
 
@@ -61,4 +69,5 @@ const mapDispatchToProps = dispatch => (
         onInputChange: event => dispatch(updateSearchText(event.target.value)),
     }
 );
+
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPannel);

@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 import MovieList from '../../components/MovieList/MovieList';
@@ -9,7 +11,30 @@ import { fetchDetailedMovie } from '../../actions/movies.actions';
 import '@babel/polyfill';
 import './DetailPage.css';
 
-const getStatus = (text) => {
+type movieType = {
+    id: Number,
+    title: String,
+    tagline: String,
+    vote_average: Number,
+    vote_count: Number,
+    release_date: String,
+    poster_path: String,
+    overview: String,
+    budget: Number,
+    revenue: Number,
+    genres: Array<String>,
+    runtime: Number,
+}
+
+type DetailPagePropType = {
+    getDetailedMovie: Function,
+    movies: Array<movieType>,
+    detailedMovie: movieType,
+    match: Object,
+    history: Object,
+}
+
+const getStatus = (text: String):any => {
     if (!text) {
         return '';
     }
@@ -17,7 +42,7 @@ const getStatus = (text) => {
     return `Films by ${text.charAt(0).toUpperCase() + text.slice(1)} genre`;
 };
 
-class DetailPage extends React.Component {
+class DetailPage extends React.Component<DetailPagePropType> {
     componentDidMount = () => {
         const { getDetailedMovie, match } = this.props;
         const { params } = match;
@@ -26,7 +51,7 @@ class DetailPage extends React.Component {
         getDetailedMovie(movieId);
     }
 
-    onPosterClick = async (data) => {
+    onPosterClick = async (data: Object) => {
         const { getDetailedMovie, history } = this.props;
 
         history.push(`/film/${data.id}`);

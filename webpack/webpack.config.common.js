@@ -5,19 +5,16 @@ const isDevMod = process.env.NODE_ENV === 'development';
 
 module.exports = {
     mode: process.env.NODE_ENV,
-
     output: {
         filename: 'js/[name].js',
         path: path.resolve('./public'),
     },
-
     resolve: {
         extensions: ['.js'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
         },
     },
-
     module: {
         rules: [
             {
@@ -35,7 +32,6 @@ module.exports = {
             },
         ],
     },
-
     plugins: [
         isDevMod ? new webpack.NamedModulesPlugin() : new webpack.HashedModuleIdsPlugin(),
     ],

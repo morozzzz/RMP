@@ -1,7 +1,14 @@
+// @flow
+
 import React from 'react';
 import './PosterTile.css';
 
-const PosterTile = ({ data, onTileClick }) => {
+type posterTilePropType = {
+    data: Object,
+    onTileClick: Function
+};
+
+const PosterTile = ({ data, onTileClick }: posterTilePropType) => {
     const {
         poster_path,
         title,
